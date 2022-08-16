@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \Pyz\Zed\Planet\Communication\PlanetCommunicationFactory getFactory()
+ * @method \Pyz\Zed\Planet\Business\PlanetFacadeInterface getFacade()
  */
 
 class CreateController extends AbstractController
@@ -27,7 +28,10 @@ class CreateController extends AbstractController
             ->handleRequest($request);
 
         if ($planetForm->isSubmitted() && $planetForm->isValid()) {
-            $this->addSuccessMessage('Planet was created. Well not yet :)');
+            $this->getFacade()
+                ->savePlanet($planetForm->getData());
+
+            $this->addSuccessMessage('Planet was created.');
 
             return $this->redirectResponse('/planet/list');
         }
