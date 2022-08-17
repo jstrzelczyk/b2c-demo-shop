@@ -52,24 +52,24 @@ class PlanetTable extends AbstractTable
      *
      * @return array
      */
-//    protected function prepareData(TableConfiguration $config): array
-//    {
-//        $planetDataItems = $this->runQuery($this->planetQuery,
-//            $config);
-//        $planetTableRows = [];
-//        foreach ($planetDataItems as $planetDataItem) {
-//            $planetTableRows[] = [
-//                PyzPlanetTableMap::COL_NAME =>
-//                    $planetDataItem[PyzPlanetTableMap::COL_NAME],
-//                PyzPlanetTableMap::COL_INTERESTING_FACT =>
-//                    $planetDataItem[PyzPlanetTableMap:: COL_INTERESTING_FACT]
-//            ];
-//        }
-//        return $planetTableRows;
-//    }
-
     protected function prepareData(TableConfiguration $config): array
     {
-        return $this->runQuery($this->planetQuery, $config);
+        $planetDataItems = $this->runQuery($this->planetQuery,
+            $config);
+        $planetTableRows = [];
+        foreach ($planetDataItems as $planetDataItem) {
+            $planetTableRows[] = [
+                PyzPlanetTableMap::COL_NAME =>
+                    $planetDataItem[PyzPlanetTableMap::COL_NAME],
+                PyzPlanetTableMap::COL_INTERESTING_FACT =>
+                    $planetDataItem[PyzPlanetTableMap:: COL_INTERESTING_FACT]
+            ];
+        }
+        return $planetTableRows;
     }
+//
+//    protected function prepareData(TableConfiguration $config): array
+//    {
+//        return $this->runQuery($this->planetQuery, $config);
+//    }
 }
