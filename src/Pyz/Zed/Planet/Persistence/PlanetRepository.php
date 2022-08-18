@@ -4,6 +4,7 @@ namespace Pyz\Zed\Planet\Persistence;
 
 
 
+use Generated\Shared\Transfer\PlanetCollectionTransfer;
 use Generated\Shared\Transfer\PlanetTransfer;
 
 use Orm\Zed\Planet\Persistence\PyzPlanet;
@@ -76,6 +77,24 @@ class PlanetRepository extends AbstractRepository implements PlanetRepositoryInt
 
         return (new PlanetTransfer())->fromArray($planetEntity->toArray());
 
+    }
+
+
+    /**
+     * @param \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
+     * @return \Generated\Shared\Transfer\PlanetCollectionTransfer $planetsRestApiTransfer
+     */
+    public function getPlanetCollection(PlanetCollectionTransfer $planetsRestApiTransfer): PlanetCollectionTransfer
+    {
+        $planetCollection = $this->createPyzPlanetQuery()
+            ->find();
+
+        foreach ($planetCollection as $planetEntity) {
+            $planetTransfer = (new PlanetTransfer())->fromArray($planetEntity->toArray());
+            $planetsRestApiTransfer->addPlanet($planetTransfer);
+        }
+
+        return $planetsRestApiTransfer;
     }
 
 }
