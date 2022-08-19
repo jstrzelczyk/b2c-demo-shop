@@ -79,12 +79,7 @@ class PlanetTable extends AbstractTable
         }
         return $planetTableRows;
     }
-    public const BUTTON_EDIT = "Edit";
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return $this
-     */
+
 
 
 //    protected function generateItemButtons($planetItem) {
