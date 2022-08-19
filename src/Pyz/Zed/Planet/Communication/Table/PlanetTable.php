@@ -4,8 +4,7 @@ use Orm\Zed\Planet\Persistence\Map\PyzPlanetTableMap;
 use Spryker\Zed\Gui\Communication\Table\AbstractTable;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
 use Orm\Zed\Planet\Persistence\PyzPlanetQuery;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\FormBuilderInterface;
+
 
 class PlanetTable extends AbstractTable
 {
