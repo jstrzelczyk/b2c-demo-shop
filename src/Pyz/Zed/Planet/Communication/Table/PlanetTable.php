@@ -4,8 +4,12 @@ use Orm\Zed\Planet\Persistence\Map\PyzPlanetTableMap;
 use Spryker\Zed\Gui\Communication\Table\AbstractTable;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
 use Orm\Zed\Planet\Persistence\PyzPlanetQuery;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormBuilderInterface;
+
 class PlanetTable extends AbstractTable
 {
+    public const COL_ACTIONS = 'Action';
     /**
      * @inheritDoc
      */
@@ -29,7 +33,8 @@ class PlanetTable extends AbstractTable
     {
         $config->setHeader([
             PyzPlanetTableMap::COL_NAME => 'Planet name',
-            PyzPlanetTableMap::COL_INTERESTING_FACT => 'Interesting fact'
+            PyzPlanetTableMap::COL_INTERESTING_FACT => 'Interesting fact',
+            self::COL_ACTIONS => 'Action'
         ]);
 
         $config->setSortable([
@@ -39,6 +44,9 @@ class PlanetTable extends AbstractTable
 
         $config->setSearchable([
             PyzPlanetTableMap::COL_NAME
+        ]);
+        $config->setRawColumns([
+            self::COL_ACTIONS
         ]);
 
         return $config;
@@ -62,14 +70,42 @@ class PlanetTable extends AbstractTable
                 PyzPlanetTableMap::COL_NAME =>
                     $planetDataItem[PyzPlanetTableMap::COL_NAME],
                 PyzPlanetTableMap::COL_INTERESTING_FACT =>
-                    $planetDataItem[PyzPlanetTableMap:: COL_INTERESTING_FACT]
+                    $planetDataItem[PyzPlanetTableMap:: COL_INTERESTING_FACT],
+//                self::COL_ACTIONS => $this->generateItemButtons($planetDataItem)
+                self::COL_ACTIONS => $this->generateEditButton('/planet/edit?id-planet='.$planetDataItem[PyzPlanetTableMap::COL_ID_PLANET],'Edit')
+
             ];
+
         }
         return $planetTableRows;
     }
+    public const BUTTON_EDIT = "Edit";
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     *
+     * @return $this
+     */
+
+
+//    protected function generateItemButtons($planetItem) {
+//        $btnGroup = [];
+//        $btnGroup[] = $this->createButtonGroupItem(
+//            "Edit",
+//            "/planet/edit?name={$planetItem[PyzPlanetTableMap::COL_NAME]}"
+//        );
+//        $btnGroup[] = $this->createButtonGroupItem(
+//            "Delete",
+//            "/planet/delete?name={$planetItem[PyzPlanetTableMap::COL_NAME]}"
+//        );
+//        return $this->generateButtonGroup(
+//            $btnGroup,
+//            'Actions'
+//        );
+//    }
 //
 //    protected function prepareData(TableConfiguration $config): array
 //    {
 //        return $this->runQuery($this->planetQuery, $config);
 //    }
+
 }
