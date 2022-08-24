@@ -211,6 +211,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ProductValidityConsole(),
             new OauthTokenConsole(),
             new DataImportConsole(),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_PLANET),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_STORE),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_CURRENCY),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CategoryDataImportConfig::IMPORT_TYPE_CATEGORY),
@@ -341,6 +342,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new OrderInvoiceSendConsole(),
             new MessageBrokerWorkerConsole(),
+
+
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
