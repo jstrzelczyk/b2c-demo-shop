@@ -11,5 +11,10 @@
                 size="50"/>
         <column name="interesting_fact" type="VARCHAR"
                 size="255"/>
+
+        <behavior name="event">
+            <parameter name="pyz_planet_all" column="*"/>
+        </behavior>
+
     </table>
 </database>
