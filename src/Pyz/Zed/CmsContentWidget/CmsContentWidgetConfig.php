@@ -14,6 +14,7 @@ use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurati
 use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
 use SprykerShop\Shared\CmsContentWidgetProductSetConnector\ContentWidgetConfigurationProvider\CmsProductSetContentWidgetConfigurationProvider;
 use SprykerShop\Shared\FileManagerWidget\CmsContentWidgetConfigurationProvider\FileManagerWidgetConfigurationProvider;
+use Pyz\Shared\CmsContentWidgetPlanetConnector\ContentWidgetConfigurationProvider\CmsContentWidgetPlanetConnectorConfigurationProvider;
 
 class CmsContentWidgetConfig extends SprykerCmsContentConfig
 {
@@ -31,6 +32,7 @@ class CmsContentWidgetConfig extends SprykerCmsContentConfig
             CmsProductGroupContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductGroupContentWidgetConfigurationProvider(),
             FileManagerWidgetConfigurationProvider::FUNCTION_NAME => new FileManagerWidgetConfigurationProvider(),
             CmsContentWidgetCmsBlockConnectorConfigurationProvider::FUNCTION_NAME => new CmsContentWidgetCmsBlockConnectorConfigurationProvider(),
+            CmsContentWidgetPlanetConnectorConfigurationProvider::FUNCTION_NAME => new CmsContentWidgetPlanetConnectorConfigurationProvider(),
         ];
     }
 }
