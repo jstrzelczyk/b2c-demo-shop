@@ -36,6 +36,13 @@
 {% endblock %}
 {% block contentClass %} page-layout-main {% endblock %}
 {% block content %}
+    {% widget 'PlanetWidget' args ['mercury'] only %}
+
+    {% nowidget %}
+
+    <h1>Nothing to see here!</h1>
+
+    {% endwidget %}
     <div class="container__inner">
         <div class="grid">
             <meta itemprop="name" content="{{ data.product.name }}">
